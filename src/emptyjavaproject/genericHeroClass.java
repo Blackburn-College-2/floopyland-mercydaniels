@@ -8,47 +8,57 @@ package emptyjavaproject;
 import com.pauliankline.floopyconnector.*;
 import java.awt.Point;
 
-
 /**
  *
  * @author mercy.daniels
  */
-public class genericHeroClass extends BaseHero{
+public class genericHeroClass extends BaseHero {
 
-    public genericHeroClass(GameBoard gameboard, Point location) {
-        super(gameboard, location);
+    
+
+    public genericHeroClass(GameBoard gameBoard, Point location) {
+        super(gameBoard, location);
     }
-    
-    
+
+    public void attack(int dmg){
+        
+    }
     @Override
     public boolean isInBattle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return true;
     }
 
     @Override
-    public String enemy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public BaseHero enemy() {
+       gameBoard.
     }
 
     @Override
     public void gameTickAction(long arg0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(isInBattle()){
+           
+       }
     }
-
+/**
+ * drop items 
+ * removes the hero
+ * crie
+ */
     @Override
     protected void die() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+        System.out.println("Hero has died!");
+       
     }
 
     @Override
     public boolean isDead() {
-          if (hp <= 0){
+        if (hp <= 0) {
             
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    
+
 }
