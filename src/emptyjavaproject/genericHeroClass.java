@@ -14,47 +14,53 @@ import java.awt.Point;
  */
 public class genericHeroClass extends BaseHero {
 
-    
+    GameBoard gameBoard = new GameBoard();
 
     public genericHeroClass(GameBoard gameBoard, Point location) {
         super(gameBoard, location);
+        this.gameBoard = gameBoard;
     }
 
-    public void attack(int dmg){
-        
+    public void attack(int dmg) {
+
     }
+
     @Override
     public boolean isInBattle() {
-       return true;
+        return true;
     }
 
     @Override
-    public BaseHero enemy() {
-       gameBoard.
+    public String enemy() {
+       BaseHero enemy = gameBoard.getGameSquare(location).getHeroesPresent().get(0);
+       return enemy.name;
     }
 
+    public BaseHero enemyHero() {
+       BaseHero enemy = gameBoard.getGameSquare(location).getHeroesPresent().get(0);
+       return enemy;
+    }
     @Override
     public void gameTickAction(long arg0) {
-       if(isInBattle()){
-           
-       }
+        if (isInBattle()) {
+
+        }
     }
-/**
- * drop items 
- * removes the hero
- * crie
- */
+
+    /**
+     * drop items removes the hero crie
+     */
     @Override
     protected void die() {
-      
+
         System.out.println("Hero has died!");
-       
+
     }
 
     @Override
     public boolean isDead() {
         if (hp <= 0) {
-            
+
             return true;
         } else {
             return false;
