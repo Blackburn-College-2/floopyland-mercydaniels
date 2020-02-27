@@ -5,21 +5,22 @@
  */
 package emptyjavaproject;
 
-import com.pauliankline.floopyconnector.*;
+import com.pauliankline.floopyconnector.BaseHero;
+import com.pauliankline.floopyconnector.GameBoard;
 import java.awt.Point;
-
 
 /**
  *
  * @author mercy.daniels
  */
-public class genericHeroClass extends BaseHero{
+public class Healer extends genericHeroClass{
+    private String healerName;
 
-    public genericHeroClass(GameBoard gameboard, Point location) {
-        super(gameboard, location);
+    public Healer(String healerName) {
+       
+        this.healerName = healerName;
     }
-    
-    
+
     @Override
     public boolean isInBattle() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -37,18 +38,9 @@ public class genericHeroClass extends BaseHero{
 
     @Override
     protected void die() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Healer has died rip");
     }
 
-    @Override
-    public boolean isDead() {
-          if (hp <= 0){
-            
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+
     
 }
