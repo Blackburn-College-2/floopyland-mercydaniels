@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package emptyjavaproject;
-
-import com.pauliankline.floopyconnector.BaseHero;
-import com.pauliankline.floopyconnector.GameBoard;
+import com.pauliankline.floopyconnector.*;
 import java.awt.Point;
 
 /**
@@ -14,11 +12,10 @@ import java.awt.Point;
  * @author mercy.daniels
  */
 public class Healer extends genericHeroClass{
-    private String healerName;
+    
 
-    public Healer(String healerName) {
-       
-        this.healerName = healerName;
+    public Healer(GameBoard gameBoard, Point location) {
+       super(gameBoard,location);
     }
 
     @Override

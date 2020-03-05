@@ -18,41 +18,56 @@ public class genericHeroClass extends BaseHero {
 
     public genericHeroClass(GameBoard gameBoard, Point location) {
         super(gameBoard, location);
-        this.gameBoard = gameBoard;
-    }
-
-    public void attack(int dmg) {
-
+        gameBoard.getGameSquare(location).addHero(this);
     }
 
     @Override
     public boolean isInBattle() {
-        return true;
+        return false;
     }
 
     @Override
     public String enemy() {
-       BaseHero enemy = gameBoard.getGameSquare(location).getHeroesPresent().get(0);
-       return enemy.name;
+        //BaseHero enemy = gameBoard.getGameSquare(location).getHeroesPresent().get(0);
+        return "cool";
     }
 
-    public BaseHero enemyHero() {
-       BaseHero enemy = gameBoard.getGameSquare(location).getHeroesPresent().get(0);
-       return enemy;
-    }
     @Override
     public void gameTickAction(long arg0) {
-        if (isInBattle()) {
-
+        if (!isInBattle()) {
+            int random = (int) (Math.random() * 3) + 1;
+            gameboard.getGameSquare(location).removeHero(this);
+            switch (random) {
+                case 1:
+                    location.x = (location.x + 1) % gameboard.getWidth();
+                    break;
+                case 2:
+                    if(location.x-1 >= 0){
+                    location.x = (location.x - 1);
+                    }
+                    else {
+                        location.x =gameboard.getWidth()-1;
+                    }
+                    break;
+                case 3:
+                    location.y = (location.y + 1) % gameboard.getHeight();
+                    break;
+                default:
+                    if(location.y-1 >= 0){
+                    location.y = (location.y - 1);
+                    }else {
+                        location.y = gameboard.getHeight()- 1;
+                    }
+                    break;
+            }
+            gameboard.getGameSquare(location).addHero(this);
         }
     }
 
-    /**
-     * drop items removes the hero crie
-     */
+    
     @Override
     protected void die() {
-
+    gameboard.getGameSquare(location).removeHero(this);
         System.out.println("Hero has died!");
 
     }
