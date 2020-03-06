@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package emptyjavaproject;
+package floopyland;
 
 import com.pauliankline.floopyconnector.*;
 import java.awt.Point;
 
 /**
- *
+ * Buffer between individual hero classes and BaseHero
  * @author mercy.daniels
  */
 public class genericHeroClass extends BaseHero {
@@ -21,17 +21,31 @@ public class genericHeroClass extends BaseHero {
         gameBoard.getGameSquare(location).addHero(this);
     }
 
+    /**
+     * Determines whether or not hero is in battle
+     * @return boolean depending on if hero is in battle
+     */
     @Override
     public boolean isInBattle() {
         return false;
     }
 
+    /**
+     * Determines the name of the enemy the hero is fighting
+     * @return name of enemy as string
+     */
     @Override
     public String enemy() {
-        //BaseHero enemy = gameBoard.getGameSquare(location).getHeroesPresent().get(0);
-        return "cool";
+        BaseHero enemy = gameBoard.getGameSquare(location).getHeroesPresent().get(0);
+        return enemy.name;
     }
 
+    /**
+     * Determines what a what a hero does per game tick.
+     * A hero can move, pick up an item, enter battle if not already in battle
+     * If in battle, a hero can only attack or dodge
+     * @param arg0
+     */
     @Override
     public void gameTickAction(long arg0) {
         if (!isInBattle()) {
@@ -64,7 +78,9 @@ public class genericHeroClass extends BaseHero {
         }
     }
 
-    
+    /**
+     * Removes hero from gameboard and delivers parting message
+     */
     @Override
     protected void die() {
     gameboard.getGameSquare(location).removeHero(this);
@@ -72,6 +88,10 @@ public class genericHeroClass extends BaseHero {
 
     }
 
+    /**
+     * Makes sure a person with no hp is dead
+     * @return boolean determining if a hero is dead
+     */
     @Override
     public boolean isDead() {
         if (hp <= 0) {

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package emptyjavaproject;
+package floopyland;
 
 /**
- *
+ *Sets up specifics for ninja class
  * @author mercy.daniels
  */
 public class Ninja {
